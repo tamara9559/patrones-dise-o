@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/adapter.iml" filepath="$PROJECT_DIR$/adapter.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/factory-method-java.iml" filepath="$PROJECT_DIR$/factory-method-java.iml" />
+>>>>>>> e120bb9d20121e0639f7a03b92b0849bf02d0726
     </modules>
   </component>
 </project>
