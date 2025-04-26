@@ -1,0 +1,32 @@
+import traceback
+
+class ErrorLogger:
+    _instancia = None
+
+    def __new__(cls):
+        if cls._instancia is None:
+            cls._instancia = super(ErrorLogger, cls).__new__(cls)
+        return cls._instancia
+
+    def log_error(self, error):
+        print("=== ERROR DETECTADO ===")
+        print("Tipo de error:", type(error).__name__)
+        print("Mensaje:", str(error))
+        print("Traceback:")
+        print(traceback.format_exc())
+        print("=======================")
+
+
+# Ejemplo de uso
+def dividir(a, b):
+    try:
+        return a / b
+    except Exception as e:
+        logger = ErrorLogger()
+        logger.log_error(e)
+        return None
+
+
+if __name__ == "__main__":
+    resultado = dividir(10, 0)  # Esto causará una división por cero
+    print("Resultado:", resultado)
