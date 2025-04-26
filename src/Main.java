@@ -3,14 +3,14 @@ interface HDMI {
     void conectarConHDMI();
 }
 
-// Clase existente con una interfaz incompatible (Adaptee VGA)
+// Clase existente con una interfaz incompatible (Adaptee - VGA)
 class VGA {
     public void conectarConVGA() {
         System.out.println("Conectado usando interfaz VGA.");
     }
 }
 
-// Clase nueva con una interfaz incompatible (Adaptee DisplayPort)
+// Clase nueva que también es incompatible (Adaptee - DisplayPort)
 class DisplayPort {
     public void conectarConDisplayPort() {
         System.out.println("Conectado usando interfaz DisplayPort.");
@@ -32,7 +32,7 @@ class AdaptadorVGAaHDMI implements HDMI {
     }
 }
 
-// Adaptador que permite usar un DisplayPort como si fuera HDMI
+// Adaptador nuevo que permite usar DisplayPort como si fuera HDMI
 class AdaptadorDisplayPortaHDMI implements HDMI {
     private DisplayPort displayPort;
 
@@ -48,16 +48,18 @@ class AdaptadorDisplayPortaHDMI implements HDMI {
 }
 
 // Cliente que solo trabaja con HDMI
-class Cliente {
+public class Main {
     public static void main(String[] args) {
         // Dispositivo con salida VGA
         VGA miMonitorVGA = new VGA();
         HDMI adaptadorVGA = new AdaptadorVGAaHDMI(miMonitorVGA);
         adaptadorVGA.conectarConHDMI();
 
+        System.out.println();
+
         // Dispositivo con salida DisplayPort
-        DisplayPort miMonitorDP = new DisplayPort();
-        HDMI adaptadorDP = new AdaptadorDisplayPortaHDMI(miMonitorDP);
-        adaptadorDP.conectarConHDMI();
+        DisplayPort miMonitorDisplayPort = new DisplayPort();
+        HDMI adaptadorDisplayPort = new AdaptadorDisplayPortaHDMI(miMonitorDisplayPort);
+        adaptadorDisplayPort.conectarConHDMI();
     }
 }
